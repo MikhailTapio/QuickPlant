@@ -8,6 +8,7 @@ import net.minecraftforge.event.entity.item.{ItemExpireEvent, ItemTossEvent}
 class QuickPlantEvent {
   @SubscribeEvent
   def onItemToss(event: ItemTossEvent): Unit = {
+    if (event.isCanceled) return
     val itemEntity = event.entityItem
     if (isPlant(itemEntity.getEntityItem) == 0) return
     itemEntity.lifespan = CommonConfig.refreshInterval
@@ -15,6 +16,7 @@ class QuickPlantEvent {
 
   @SubscribeEvent
   def onItemExpire(event: ItemExpireEvent): Unit = {
+    if (event.isCanceled) return
     val itemEntity = event.entityItem
     val plantType = isPlant(itemEntity.getEntityItem)
     if (plantType == 0) return
