@@ -24,9 +24,9 @@ object Utilities {
 
   def tryPlantThere(entity: EntityItem, isSeed: Boolean): Boolean = {
     val world = entity.worldObj
-    val x = entity.posX.intValue() - 1
+    val x = Math.floor(entity.posX).intValue()
     val y = Math.floor(entity.posY).intValue()
-    val z = entity.posZ.intValue() - 1
+    val z = Math.floor(entity.posZ).intValue()
     val blockIn = world.getBlock(x, y, z)
     if (!blockIn.getMaterial.isReplaceable) return false
     val dirt = world.getBlock(x, y - 1, z)
