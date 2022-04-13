@@ -1,16 +1,16 @@
 [
   {
-    "modid": "modid",
-    "name": "Example Mod",
-    "description": "Example placeholder mod.",
+    "modid": "quickplant",
+    "name": "QuickPlant",
+    "description": "Toss and plant!",
     "version": "${version}",
     "mcversion": "${mcversion}",
     "url": "",
     "updateUrl": "",
     "authorList": [
-      "ExampleDude"
+      "Tapio"
     ],
-    "credits": "The Forge and FML guys, for making this example",
+    "credits": "",
     "logoFile": "",
     "screenshots": [],
     "dependencies": []
