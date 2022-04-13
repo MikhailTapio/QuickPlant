@@ -24,13 +24,12 @@ object Utilities {
 
   def tryPlantThere(entity: EntityItem, isSeed: Boolean): Boolean = {
     val world = entity.worldObj
-    val x = entity.posX.intValue() - 1
+    val x = entity.posX.intValue()
     val y = Math.floor(entity.posY).intValue()
-    val z = entity.posZ.intValue() - 1
+    val z = entity.posZ.intValue()
     val blockIn = world.getBlock(x, y, z)
     if (!blockIn.getMaterial.isReplaceable) return false
     val dirt = world.getBlock(x, y - 1, z)
-    // TODO:
     val item = entity.getEntityItem.getItem
     val plant = if (isSeed) item.asInstanceOf[IPlantable] else Block.getBlockFromItem(item).asInstanceOf[IPlantable]
     if (!dirt.canSustainPlant(world, x, y - 1, z, ForgeDirection.UP, plant)) return false
