@@ -32,6 +32,7 @@ object Utilities {
     val dirt = world.getBlock(x, y - 1, z)
     val item = entity.getEntityItem.getItem
     val plant = if (isSeed) item.asInstanceOf[IPlantable] else Block.getBlockFromItem(item).asInstanceOf[IPlantable]
+    if (blockIn == plant.getPlant(world, x, y, z)) return false
     if (!dirt.canSustainPlant(world, x, y - 1, z, ForgeDirection.UP, plant)) return false
     world.setBlock(x, y, z, plant.getPlant(world, x, y, z), item.getMetadata(entity.getEntityItem.getItemDamage), 2)
   }
