@@ -14,7 +14,7 @@ object QuickPlant {
   var instance: QuickPlant = _
 }
 
-@Mod(modid = QuickPlant.MODID, useMetadata = true, acceptedMinecraftVersions = "[1.9,)")
+@Mod(modid = QuickPlant.MODID, useMetadata = true, acceptedMinecraftVersions = "[1.11,)")
 class QuickPlant {
   QuickPlant.instance = this
 
