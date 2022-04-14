@@ -1,0 +1,18 @@
+[
+  {
+    "modid": "quickplant",
+    "name": "QuickPlant",
+    "description": "Toss and plant!",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "",
+    "updateUrl": "",
+    "authorList": [
+      "Tapio"
+    ],
+    "credits": "",
+    "logoFile": "",
+    "screenshots": [],
+    "dependencies": []
+  }
+]
