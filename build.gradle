@@ -15,7 +15,7 @@ buildscript {
 apply plugin: 'scala'
 apply plugin: 'forge'
 
-version = "1.8.X-1.0.0"
+version = "1.8.X-1.0.1"
 group = "committee.nova.quickplant" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "QuickPlant"
 
