@@ -1,5 +1,6 @@
 package committee.nova.quickplant.common.util
 
+import committee.nova.quickplant.common.config.CommonConfig
 import net.minecraft.block.Block
 import net.minecraft.entity.item.EntityItem
 import net.minecraft.item.ItemStack
@@ -34,6 +35,8 @@ object Utilities {
     val plant = if (isSeed) item.asInstanceOf[IPlantable] else Block.getBlockFromItem(item).asInstanceOf[IPlantable]
     if (blockIn == plant.getPlant(world, x, y, z)) return false
     if (!dirt.canSustainPlant(world, x, y - 1, z, ForgeDirection.UP, plant)) return false
-    world.setBlock(x, y, z, plant.getPlant(world, x, y, z), item.getMetadata(entity.getEntityItem.getItemDamage), 2)
+    val success = world.setBlock(x, y, z, plant.getPlant(world, x, y, z), item.getMetadata(entity.getEntityItem.getItemDamage), 2)
+    if (success && CommonConfig.playSound) world.playSoundEffect(x, y, z, "dig.grass", .5F, 1F)
+    success
   }
 }
