@@ -7,6 +7,8 @@ import net.minecraft.item.ItemStack
 import net.minecraftforge.common.IPlantable
 import net.minecraftforge.common.util.ForgeDirection
 
+import scala.util.Try
+
 object Utilities {
   def getPlant(stack: ItemStack): IPlantable = {
     isPlant(stack) match {
@@ -34,7 +36,8 @@ object Utilities {
     val item = entity.getEntityItem.getItem
     val plant = if (isSeed) item.asInstanceOf[IPlantable] else Block.getBlockFromItem(item).asInstanceOf[IPlantable]
     if (blockIn == plant.getPlant(world, x, y, z)) return false
-    if (!dirt.canSustainPlant(world, x, y - 1, z, ForgeDirection.UP, plant)) return false
+    val place = Try(dirt.canSustainPlant(world, x, y - 1, z, ForgeDirection.UP, plant)).getOrElse(false)
+    if (!place) return false
     val success = world.setBlock(x, y, z, plant.getPlant(world, x, y, z), item.getMetadata(entity.getEntityItem.getItemDamage), 2)
     if (success && CommonConfig.playSound) world.playSoundEffect(x, y, z, "dig.grass", .5F, 1F)
     success
