@@ -21,7 +21,7 @@ class QuickPlantEvent {
     val stack = itemEntity.getEntityItem
     val plantType = isPlant(stack)
     if (plantType == 0) return
-    if (itemEntity.getAge >= CommonConfig.expireTime) return
+    if (itemEntity.ticksExisted >= CommonConfig.expireTime) return
     if (!tryPlantThere(itemEntity, isSeed = plantType == 1)) {
       event.extraLife = CommonConfig.refreshInterval
       event.setCanceled(true)
